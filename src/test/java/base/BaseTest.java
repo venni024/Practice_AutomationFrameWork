@@ -8,6 +8,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import core.config.ConfigReader;
 import core.driver.DriverFactory;
@@ -20,7 +22,8 @@ import core.listeners.*;
 public class BaseTest {
 
     @BeforeMethod
-    public void setup(String Browser, Method method) {
+    @Parameters("browser")
+    public void setup(@Optional("Chrome") String Browser, Method method) {
 
         WebDriver driver = DriverFactory.createDriver(Browser);
         DriverManager.setDriver(driver);

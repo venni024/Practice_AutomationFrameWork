@@ -3,30 +3,29 @@ package core.config;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
 	
 	private static Properties prop;
 	
-	public static String get(String key) {
-		
-		prop = new Properties();
-		try {
-			FileInputStream fis = new FileInputStream("C:\\Users\\kburada\\eclipse-workspace\\ert\\src\\test\\resources\\config\\qa.properties");
-			try {
-				prop.load(fis);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return prop.getProperty(key);
-		
-	}
+	static {
+        prop = new Properties();
+        try {
+            InputStream is = ConfigReader.class
+                    .getClassLoader()
+                    .getResourceAsStream("config/qa.properties");
+
+            prop.load(is);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    	public static String get(String key) {
+        return prop.getProperty(key);
+    }
 
 }

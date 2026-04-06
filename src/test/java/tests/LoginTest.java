@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
 	public Object[][] getLoginData() {
 
 	    return ExcelReader.getData(
-	        "src/test/resources/testdata/testdata.xlsx",
+	        "src/test/resources/testdata/ExcelData.xlsx",
 	        "Login"
 	    );
 	}

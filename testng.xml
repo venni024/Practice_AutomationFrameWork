@@ -2,6 +2,7 @@
 
 <suite name="AutomationSuite" parallel="tests" thread-count="2">
     <test name="LoginTests">
+    <parameter name = "browser" value = "chrome"/>
         <classes>
             <class name="tests.LoginTest"/>
         </classes>
