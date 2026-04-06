@@ -1,0 +1,100 @@
+{
+  "SHORT_TITLE": "ERT",
+  "FULL_TITLE": "Estimated Restoration Time",
+  "BAND_RADIUS": 43200000,
+  "MAX_CUTOFF": 1209600000,
+  "OUTAGE_POLLING_INTERVAL": 300000,
+  "MODEL_APPROVAL_POLLING_INTERVAL": 10000,
+  "ACTIVITY_SLEEP_TIME": 300,
+  "SIMILARITY_SCORE_SELECTION_THRESHOLD": 0.9,
+  "SEASONS": [
+    {
+      "name": "Winter",
+      "start": {
+        "month": 12,
+        "day": 1
+      },
+      "end": {
+        "month": 2,
+        "day": 29
+      }
+    },
+    {
+      "name": "Spring",
+      "start": {
+        "month": 3,
+        "day": 1
+      },
+      "end": {
+        "month": 5,
+        "day": 31
+      }
+    },
+    {
+      "name": "Summer",
+      "start": {
+        "month": 6,
+        "day": 1
+      },
+      "end": {
+        "month": 8,
+        "day": 31
+      }
+    },
+    {
+      "name": "Fall",
+      "start": {
+        "month": 9,
+        "day": 1
+      },
+      "end": {
+        "month": 11,
+        "day": 30
+      }
+    }
+  ],
+  "STORM_TYPES": [
+    "Flood",
+    "Hurricane",
+    "Ice",
+    "Snow",
+    "Thunderstorm",
+    "Tornado",
+    "Wind"
+  ],
+  "STORM_LEVELS":[
+    "1-Minor",
+    "2-Major",
+    "3-Severe",
+    "4-Hazardous"
+  ],
+  "DTW_THRESHOLDS": {
+    "DTW_DISTANCE_MAX_THRESHOLD": 100.0,
+    "DATA_INSUFF_THRESHOLD": 0.5,
+    "MAX_PARALLEL_PROCESSES": 5,
+    "COLUMNS_TO_GAP_FILL": ["u-component_of_wind_height_above_ground",
+                            "v-component_of_wind_height_above_ground",
+                            "Precipitation_rate_surface", "Wind_speed_gust_surface",
+                            "Temperature_surface", "Volumetric_Soil_Moisture_Content_depth_below_surface_layer",
+                            "Per_cent_frozen_precipitation_surface"],
+    "PIVOT_COLUMNS": ["longitude", "latitude", "time"],
+    "WEATHER_COLUMNS_TO_GET": ["time", "latitude", "longitude",
+                                 "u-component_of_wind_height_above_ground",
+                                 "v-component_of_wind_height_above_ground",
+                                 "Precipitation_rate_surface", "Wind_speed_gust_surface",
+                                 "Temperature_surface",
+                                 "Liquid_Volumetric_Soil_Moisture_non_Frozen_depth_below_surface_layer",
+                                 "Per_cent_frozen_precipitation_surface",
+                                 "Volumetric_Soil_Moisture_Content_depth_below_surface_layer"],
+    "COLUMNS_TO_NORMALIZE": ["Precipitation_rate_surface", "Wind_speed_gust_surface","speed_scalar","Temperature_surface"],
+    "NORMALIZATION_VALUES": [0.05, 40, 50, 329.85],
+    "DTW_CALCULATION_COLUMNS_TO_USE": ["Precipitation_rate_surface", "Wind_speed_gust_surface",
+                                           "speed_scalar", "sin_wind_dir", "cos_wind_dir",
+                                           "Temperature_surface",
+                                           "Volumetric_Soil_Moisture_Content_depth_below_surface_layer",
+                                           "Liquid_Volumetric_Soil_Moisture_non_Frozen_depth_below_surface_layer",
+                                           "Per_cent_frozen_precipitation_surface"],
+    "WEIGHTS_TO_ASSIGN": [1.0, 1.0, 1.0, 0.5, 0.5, 1.0, 1.0, 1.0, 0.01],
+    "OCEAN_GRID_POINT_LAT": 40.5
+  }
+}
